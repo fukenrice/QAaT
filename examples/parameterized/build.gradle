@@ -1,0 +1,102 @@
+group 'example01'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'findbugs'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.testng', name: 'testng', version: '6.1.1'
+    findbugs 'com.google.code.findbugs:findbugs:3.0.1'
+}
+
+dependencies {
+    testCompile "junit:junit:4.11"
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+
+    testImplementation 'junit:junit:4.11'
+
+    compile "args4j:args4j:2.0.21"
+    compile "org.codehaus.groovy:groovy-all:2.3.7"
+}
+sourceSets {
+    test.java.srcDir  'src/test/java'
+    main {
+        // Changes the directory for Java sources. The default directory is
+        // 'src/main/java'.
+        java.srcDirs = ['src/main/java']
+    }
+    unitTest {
+        java{
+            srcDir 'src/test/java'
+        }
+    }
+    test {
+        java.srcDirs =[ 'src/test/java']
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.1'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'info.solidsoft.pitest'
+
+pitest {
+    verbose = true
+    targetClasses = ['listcode.*']
+    targetTests  = ['listcode.*']
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+
+}
+
+task testng(type: Test) {
+    useTestNG()
+    reports.html.destination = file("$buildDir/reports/testng")
+}
+
+test.dependsOn testng
+
+test {
+    useJUnit()
+    reports.html.destination = file("$buildDir/reports/junit")
+}
+
+findbugs {
+    ignoreFailures = true
+}
+
+jacoco {
+    toolVersion = "0.7.5.201505241946"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}

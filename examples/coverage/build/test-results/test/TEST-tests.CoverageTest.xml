@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.CoverageTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-10-27T13:46:36" hostname="DESKTOP-7NTUPT2" time="0.115">
+  <properties/>
+  <testcase name="testABC" classname="tests.CoverageTest" time="0.095"/>
+  <testcase name="testAndABCD" classname="tests.CoverageTest" time="0.0"/>
+  <testcase name="testAndAB" classname="tests.CoverageTest" time="0.003"/>
+  <testcase name="testOrABC" classname="tests.CoverageTest" time="0.001"/>
+  <testcase name="testOrAB" classname="tests.CoverageTest" time="0.001"/>
+  <testcase name="testAB" classname="tests.CoverageTest" time="0.0"/>
+  <testcase name="testA" classname="tests.CoverageTest" time="0.0"/>
+  <testcase name="testAndABC" classname="tests.CoverageTest" time="0.008"/>
+  <testcase name="testOrABCD" classname="tests.CoverageTest" time="0.001"/>
+  <system-out><![CDATA[methodABC:a
+methodABC:b
+methodABC:c
+methodOrAB:a && b
+methodOrAB:!(a && b)
+methodOrAB:!(a && b)
+methodOrAB:!(a && b)
+methodOrAB:a || b || c
+methodOrAB:a || b || c
+methodOrAB:a || b || c
+methodOrAB:!(a || b || c)
+methodOrAB:a || b
+methodOrAB:a || b
+methodOrAB:a || b
+methodOrAB:!(a || b)
+methodAB:a
+methodAB:b
+methodA:a
+methodOrAB:a && b && c
+methodOrAB:!(a && b && c)
+methodOrAB:!(a && b && c)
+methodOrAB:!(a && b && c)
+methodOrABCD:a || b || c || d
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
