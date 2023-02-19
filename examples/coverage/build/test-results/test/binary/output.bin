@@ -1,0 +1,24 @@
+methodABC:a
+methodABC:b
+methodABC:c
+methodOrAB:a && b
+methodOrAB:!(a && b)
+methodOrAB:!(a && b)
+methodOrAB:!(a && b)
+methodOrAB:a || b || c
+methodOrAB:a || b || c
+methodOrAB:a || b || c
+methodOrAB:!(a || b || c)
+methodOrAB:a || b
+methodOrAB:a || b
+methodOrAB:a || b
+methodOrAB:!(a || b)
+methodAB:a
+methodAB:b
+methodA:a
+	methodOrAB:a && b && c
+	methodOrAB:!(a && b && c)
+	methodOrAB:!(a && b && c)
+	methodOrAB:!(a && b && c)
+
+methodOrABCD:a || b || c || d
